@@ -39,7 +39,7 @@ deep space aesthetic with animated stars, glass cards, and a purple accent palet
 cd "$(spicetify -c | xargs dirname)/Themes"
 
 # 2. clone the repo
-git clone https://github.com/yourusername/void-spicetify void
+git clone https://github.com/buhhhrandon/void-spicetify void
 
 # 3. copy the extension
 cp void/void-stars.js "$(spicetify -c | xargs dirname)/Extensions/"
