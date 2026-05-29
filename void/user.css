@@ -1,0 +1,371 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Syne:wght@400;700;800&family=Fira+Code:wght@400;500&display=swap');
+
+:root {
+  --spice-main:            #060610;
+  --spice-sidebar:         #080818;
+  --spice-player:          #060610;
+  --spice-card:            #0f0f24;
+  --spice-text:            #ffffff;
+  --spice-subtext:         #8899aa;
+  --spice-button:          #7c3aed;
+  --spice-button-active:   #a78bfa;
+  --spice-selected-row:    #7c3aed;
+  --spice-tab-active:      #a78bfa;
+  --accent:                #7c3aed;
+  --accent-light:          #a78bfa;
+  --glass:                 rgba(255,255,255,0.05);
+  --glass-border:          rgba(255,255,255,0.09);
+}
+
+/* ── backgrounds ── */
+.Root__main-view,
+.main-view-container,
+.main-view-container__scroll-node {
+  background:
+    radial-gradient(ellipse at 15% 20%, rgba(80,20,180,0.22) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(20,10,100,0.18) 0%, transparent 50%),
+    radial-gradient(ellipse at 55% 10%, rgba(60,10,140,0.15) 0%, transparent 45%),
+    #060610 !important;
+}
+
+/* starfield via fixed pseudo on body */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image:
+    radial-gradient(1.5px 1.5px at  7%  9%,  rgba(255,255,255,0.85) 0%, transparent 100%),
+    radial-gradient(1px   1px   at 18% 22%,  rgba(255,255,255,0.55) 0%, transparent 100%),
+    radial-gradient(2px   2px   at 33%  5%,  rgba(255,255,255,0.75) 0%, transparent 100%),
+    radial-gradient(1px   1px   at 47% 38%,  rgba(255,255,255,0.45) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 61% 14%,  rgba(255,255,255,0.65) 0%, transparent 100%),
+    radial-gradient(1px   1px   at 72% 52%,  rgba(255,255,255,0.50) 0%, transparent 100%),
+    radial-gradient(2px   2px   at 84% 28%,  rgba(255,255,255,0.70) 0%, transparent 100%),
+    radial-gradient(1px   1px   at 91%  8%,  rgba(255,255,255,0.60) 0%, transparent 100%),
+    radial-gradient(1px   1px   at 12% 68%,  rgba(255,255,255,0.40) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 25% 82%,  rgba(255,255,255,0.55) 0%, transparent 100%),
+    radial-gradient(1px   1px   at 38% 91%,  rgba(255,255,255,0.35) 0%, transparent 100%),
+    radial-gradient(1px   1px   at 53% 75%,  rgba(255,255,255,0.50) 0%, transparent 100%),
+    radial-gradient(2px   2px   at 67% 88%,  rgba(255,255,255,0.45) 0%, transparent 100%),
+    radial-gradient(1px   1px   at 79% 64%,  rgba(255,255,255,0.55) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 88% 79%,  rgba(255,255,255,0.65) 0%, transparent 100%),
+    radial-gradient(1px   1px   at  3% 44%,  rgba(255,255,255,0.40) 0%, transparent 100%),
+    radial-gradient(1px   1px   at 95% 46%,  rgba(255,255,255,0.50) 0%, transparent 100%),
+    radial-gradient(2px   2px   at 42% 58%,  rgba(255,255,255,0.35) 0%, transparent 100%),
+    radial-gradient(1px   1px   at 58% 33%,  rgba(255,255,255,0.45) 0%, transparent 100%),
+    radial-gradient(1.5px 1.5px at 76% 18%,  rgba(255,255,255,0.60) 0%, transparent 100%);
+}
+
+/* ── sidebar ── */
+.Root__nav-bar,
+.LayoutResizeHandler ~ div,
+nav[aria-label] {
+  background: rgba(5,5,18,0.95) !important;
+  backdrop-filter: blur(20px);
+  border-right: 1px solid var(--glass-border);
+}
+
+/* ── now playing bar ── */
+.Root__now-playing-bar,
+footer,
+[data-testid="now-playing-bar"] {
+  background: rgba(4,4,14,0.97) !important;
+  backdrop-filter: blur(24px);
+  border-top: 1px solid var(--glass-border);
+}
+
+/* ── top bar ── */
+.Root__top-bar,
+header,
+[data-testid="topbar"] {
+  background: rgba(6,6,16,0.88) !important;
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+/* ── cards — target by data-testid and role ── */
+[data-testid="card-image-hit-area"],
+.x-cardImage-imageWrapper,
+.standalone-card {
+  border-radius: 10px !important;
+  transition: transform 0.18s ease, box-shadow 0.18s ease !important;
+}
+
+[data-testid="card-image-hit-area"]:hover,
+.x-cardImage-imageWrapper:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 24px rgba(124,58,237,0.25) !important;
+}
+
+/* card background */
+.x-entityCard-cardWrapper,
+[data-testid="browse-card"] {
+  background: rgba(15,15,36,0.7) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 10px !important;
+  backdrop-filter: blur(12px) !important;
+  transition: border-color 0.2s, transform 0.18s !important;
+}
+
+.x-entityCard-cardWrapper:hover,
+[data-testid="browse-card"]:hover {
+  border-color: rgba(124,58,237,0.45) !important;
+  transform: translateY(-3px) !important;
+}
+
+/* ── tracklist rows ── */
+[data-testid="tracklist-row"],
+.tracklist-row,
+[role="row"] {
+  border-radius: 6px !important;
+  transition: background 0.12s !important;
+}
+
+[data-testid="tracklist-row"]:hover,
+.tracklist-row:hover {
+  background: rgba(124,58,237,0.13) !important;
+}
+
+[data-testid="tracklist-row"][aria-selected="true"],
+.tracklist-row--active {
+  background: rgba(124,58,237,0.22) !important;
+}
+
+/* active/playing track name in purple */
+[data-testid="tracklist-row"] [aria-current],
+.tracklist-row--active [data-testid="internal-track-link"] {
+  color: var(--accent-light) !important;
+}
+
+/* ── progress bar ── */
+
+/* Spicetify exposes these CSS vars for progress bar colors */
+
+.x-progressBar-progressBarBg div:first-child,
+.x-progressBar-progressBarBg > div,
+[class*="progressBar"] > [class*="base"],
+[class*="progress"] > [class*="indicator"] {
+  background: #ffffff !important;
+}
+
+/* ── other control buttons ── */
+[data-testid="control-button-skip-back"],
+[data-testid="control-button-skip-forward"],
+[data-testid="control-button-shuffle"],
+[data-testid="control-button-repeat"] {
+  color: var(--spice-subtext) !important;
+  transition: color 0.15s, transform 0.12s !important;
+}
+
+[data-testid="control-button-skip-back"]:hover,
+[data-testid="control-button-skip-forward"]:hover {
+  color: #fff !important;
+  transform: scale(1.08) !important;
+}
+
+[data-testid="control-button-shuffle"][aria-checked="true"],
+[data-testid="control-button-repeat"][aria-checked="true"] {
+  color: var(--accent-light) !important;
+}
+
+/* ── track title in now playing ── */
+[data-testid="now-playing-widget"] a,
+[data-testid="context-item-info-title"] a,
+.track-info__name a {
+  font-family: 'Syne', sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.01em !important;
+  color: #fff !important;
+}
+
+/* ── artist names ── */
+[data-testid="context-item-info-subtitles"] a,
+[data-testid="context-item-info-subtitles"] span,
+.track-info__artists a {
+  font-family: 'Fira Code', monospace !important;
+  font-size: 11px !important;
+  color: var(--spice-subtext) !important;
+}
+
+/* ── timestamps ── */
+[data-testid="playback-position"],
+[data-testid="playback-duration"],
+.playback-bar__progress-time {
+  font-family: 'VT323', monospace !important;
+  font-size: 14px !important;
+  letter-spacing: 0.04em !important;
+  color: var(--spice-subtext) !important;
+}
+
+/* ── page headings ── */
+h1[data-encore-id="text"],
+h2[data-encore-id="text"],
+[data-testid="entityTitle"] h1,
+[data-testid="section-title"] {
+  font-family: 'Syne', sans-serif !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.01em !important;
+}
+
+/* ── search input ── */
+[data-testid="search-input"],
+input[data-testid="search-input"] {
+  background: rgba(255,255,255,0.06) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 8px !important;
+  color: #fff !important;
+  font-family: 'Fira Code', monospace !important;
+  transition: border-color 0.2s, box-shadow 0.2s !important;
+}
+
+[data-testid="search-input"]:focus {
+  border-color: rgba(124,58,237,0.6) !important;
+  box-shadow: 0 0 0 2px rgba(124,58,237,0.15) !important;
+}
+
+/* ── filter pills (All / Music / Podcasts) ── */
+[data-testid="filter-chip-button"],
+button[class*="Chip"],
+.x-chip-chipLink {
+  background: rgba(255,255,255,0.06) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 999px !important;
+  color: #fff !important;
+  transition: background 0.15s, border-color 0.15s !important;
+}
+
+[data-testid="filter-chip-button"]:hover,
+button[class*="Chip"]:hover {
+  background: rgba(124,58,237,0.2) !important;
+  border-color: rgba(124,58,237,0.5) !important;
+}
+
+[data-testid="filter-chip-button"][aria-checked="true"],
+button[class*="Chip"][aria-checked="true"] {
+  background: #fff !important;
+  color: #000 !important;
+  border-color: #fff !important;
+}
+
+/* ── context menu ── */
+[data-testid="context-menu"],
+ul[data-testid="context-menu"],
+.react-contextmenu {
+  background: rgba(8,8,24,0.97) !important;
+  backdrop-filter: blur(24px) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 10px !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.7) !important;
+}
+
+/* ── album art glow ── */
+[data-testid="CoverSlotCollapsed__container"],
+[data-testid="now-playing-view"] img,
+.cover-art img {
+  border-radius: 8px !important;
+  box-shadow: 0 0 28px rgba(124,58,237,0.35) !important;
+  transition: box-shadow 0.3s !important;
+}
+
+[data-testid="CoverSlotCollapsed__container"]:hover img {
+  box-shadow: 0 0 42px rgba(167,139,250,0.5) !important;
+}
+
+/* ── like / heart button ── */
+[data-testid="add-button"],
+button[aria-label*="Save to your Liked Songs"],
+button[aria-label*="Remove from your Liked Songs"] {
+  color: var(--accent-light) !important;
+  transition: transform 0.15s, color 0.15s !important;
+}
+
+/* ── active nav item ── */
+[aria-current="page"],
+.navlink--active,
+a[aria-current="page"] {
+  background: rgba(124,58,237,0.18) !important;
+  border-radius: 6px !important;
+  position: relative !important;
+}
+
+/* ── scrollbar ── */
+::-webkit-scrollbar { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: rgba(124,58,237,0.35);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(167,139,250,0.55);
+}
+
+/* ── playlist header gradient overlay ── */
+[data-testid="playlist-page"] .contentSpacing::before,
+[data-testid="album-page"] .contentSpacing::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(124,58,237,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+/* ── library items ── */
+[data-testid="rootlist-item"]:hover {
+  background: rgba(124,58,237,0.1) !important;
+  border-radius: 6px !important;
+}
+
+/* ── "Made for brandon" section title ── */
+[data-testid="home-page"] h2,
+[data-testid="section-header"] {
+  font-family: 'Syne', sans-serif !important;
+  font-weight: 800 !important;
+}
+
+/* Spicetify maps --spice-button to seekbar fill in most themes */
+/* These selectors cover all known Spotify build variants */
+.Root__now-playing-bar [style*="background"],
+
+
+/* ── progress & volume bars ── */
+.x-progressBar-progressBarBg {
+  --bg-color: #4a1fa8 !important;
+  background: #4a1fa8 !important;
+  background-color: #4a1fa8 !important;
+  border-radius: 2px !important;
+}
+
+.x-progressBar-sliderArea {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+  border-radius: 2px !important;
+}
+
+.x-progressBar-fillColor {
+  background: #ffffff !important;
+  background-color: #ffffff !important;
+}
+
+.progress-bar__slider,
+[data-testid="progress-bar-handle"] {
+  background: #ffffff !important;
+  box-shadow: 0 0 6px rgba(255,255,255,0.8) !important;
+}
+
+/* ── quick access grid ── */
+.view-homeShortcutsGrid-shortcut {
+  background: rgba(255,255,255,0.05) !important;
+  border: 1px solid rgba(255,255,255,0.08) !important;
+  border-radius: 6px !important;
+  backdrop-filter: blur(12px) !important;
+  transition: background 0.15s, border-color 0.15s, transform 0.15s !important;
+  overflow: hidden !important;
+}
+
+.view-homeShortcutsGrid-shortcut:hover {
+  background: rgba(124,58,237,0.15) !important;
+  border-color: rgba(124,58,237,0.4) !important;
+  transform: translateY(-2px) !important;
+}
