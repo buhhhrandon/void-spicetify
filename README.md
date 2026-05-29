@@ -8,7 +8,7 @@ deep space aesthetic with animated stars, glass cards, and a purple accent palet
 
 ## preview
 
-> screenshot goes here
+> ![preview](preview.png)
 
 ---
 
