@@ -1,0 +1,17 @@
+[
+  {
+    "name": "void",
+    "description": "a spicetify theme for those who listen in the dark. deep space aesthetic with animated stars, glass cards, and a purple accent palette.",
+    "preview": "preview.png",
+    "readme": "README.md",
+    "branch": "main",
+    "authors": [
+      { "name": "buhhhrandon", "url": "https://github.com/buhhhrandon" }
+    ],
+    "tags": ["dark", "space", "glass", "animated", "purple"],
+    "theme": "void",
+    "colorSchemes": ["void"],
+    "defaultColorScheme": "void",
+    "extensions": ["void-stars.js"]
+  }
+]
